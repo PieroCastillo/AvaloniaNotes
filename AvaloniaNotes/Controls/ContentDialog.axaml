@@ -1,0 +1,55 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:AvaloniaNotes.Controls">
+    <Design.PreviewWith>
+        <controls:ContentDialog
+            Height="600"
+            Width="400"
+            Header="Nice"
+            Content="Hello World!"/>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|ContentDialog">
+        <!-- Set Defaults -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="#aa000000">
+                    <Border Background="{DynamicResource SystemChromeHighColor}"
+                            CornerRadius="10"
+                            Margin="50"
+                            BoxShadow="0 10 45 -10 Black">
+                        <Grid Margin="20" RowDefinitions="Auto,20,*">
+                            <Grid>
+                                <ContentPresenter
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding Header}"
+                                    TextBlock.FontSize="20"
+                                    TextBlock.FontWeight="Bold"/>
+                                <Button
+                                    Width="20"
+                                    Height="20"
+                                    Name="PART_CloseButton"
+                                    Padding="0"
+                                    Background="Transparent"
+                                    HorizontalAlignment="Right">
+                                    <Path
+                                        Stretch="Uniform"
+                                        Fill="{DynamicResource SystemControlForegroundBaseHighBrush}" 
+                                        Data="{DynamicResource add_regular}">
+                                        <Path.RenderTransform>
+                                            <RotateTransform Angle="45"/>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                </Button>
+                            </Grid>
+                            <ContentPresenter
+                                Grid.Row="2"
+                                Name="PART_ContentPresenter"
+                                Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

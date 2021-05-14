@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" MinHeight="60"
+             d:DesignWidth="400"
+             x:Class="AvaloniaNotes.Views.NoteItem"
+             BorderThickness="0 5  0 0"
+             BorderBrush="LightGreen"
+             Padding="10"
+             Margin="5"
+             Background="{DynamicResource SystemControlBackgroundAltMediumBrush}">
+    <Grid RowDefinitions="Auto,auto,auto">
+        <Grid ColumnDefinitions="*,auto">
+            <TextBlock
+                Name="PART_DateText" 
+                FontSize="10"
+                Margin="2.5"
+                HorizontalAlignment="Right"
+                Foreground="{Binding $parent[UserControl].BorderBrush}"/>
+            <Button Grid.Column="1"
+                    Width="15"
+                    Height="15"
+                    Name="PART_CloseButton"
+                    Padding="0">
+                <Path
+                    Stretch="Uniform"
+                    Fill="{DynamicResource SystemControlForegroundBaseHighBrush}" 
+                    Data="{DynamicResource add_regular}">
+                    <Path.RenderTransform>
+                        <RotateTransform Angle="45"/>
+                    </Path.RenderTransform>
+                </Path>
+            </Button>
+        </Grid>
+        <ScrollViewer
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Visible"
+            Height="100">
+            <TextPresenter
+                SelectionBrush="Gray"
+                Name="PART_TextPresenter"
+                TextWrapping="Wrap"/>
+        </ScrollViewer>
+        <Image Grid.Row="2"
+               Name="PART_Image" 
+               Stretch="Uniform"
+               MaxHeight="70"/>
+    </Grid>
+</UserControl>
